@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "819325891072",
+    "firebase_url": "https://makeecologybetter-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "makeecologybetter",
+    "storage_bucket": "makeecologybetter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819325891072:android:d1c4ba1f01eca4c3fadee5",
+        "android_client_info": {
+          "package_name": "ru.myEcologyProjectForHackathon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819325891072-t7b46e5912hilhejdsc3v3ee714b71ai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVwsmTeZN8GUTmM1DA4LssYxyPHKdlLCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819325891072-t7b46e5912hilhejdsc3v3ee714b71ai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
