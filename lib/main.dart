@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/mainMap.dart';
 
  main() => runApp(MyApp());
 
@@ -10,6 +11,12 @@ import 'package:flutter/material.dart';
         theme: ThemeData(
             primarySwatch: Colors.green),
         home: HomePage(),
+
+        initialRoute: GMap.idScreen,
+
+        routes: {
+          GMap.idScreen: (context) => GMap(),
+        }
       );
     }
  }
@@ -19,7 +26,7 @@ import 'package:flutter/material.dart';
    Widget build(BuildContext context){
      return Scaffold(
        appBar: AppBar(
-           title: Text('Green Helper' )
+           title: Text('Green Informer' )
        ),
        body: Container(
            child: Center(
