@@ -12,11 +12,7 @@ import 'package:flutter_project/mainMap.dart';
             primarySwatch: Colors.green),
         home: HomePage(),
 
-        initialRoute: GMap.idScreen,
 
-        routes: {
-          GMap.idScreen: (context) => GMap(),
-        }
       );
     }
  }
@@ -29,10 +25,11 @@ import 'package:flutter_project/mainMap.dart';
            title: Text('Green Informer' )
        ),
        body: Container(
-           child: Center(
-               child:Text ('Somethig will be here')
+           child: Center(child: RaisedButton(onPressed: (){
+             Navigator.push(context, MaterialPageRoute(builder: (context) => GMap()));
+           }, child: Text('Открыть второе окно'))),
            )
-       ),
      );
    }
  }
+
