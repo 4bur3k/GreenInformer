@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/AllScreens/homeScreen.dart';
+import 'package:flutter_app/AllScreens/loginscreen.dart';
 import 'package:flutter_app/AllScreens/mainscreen.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:transparent_image/transparent_image.dart';
-
+import 'package:flutter_app/AllScreens/registrationscreen.dart';
+import 'package:flutter_app/AllScreens/mainMap.dart';
 //import 'AllScreens/loginscreen.dart';
 //import 'package:flutter_app/AllScreens/loginscreen.dart';
 //import 'package:flutter_app/AllScreens/registrationscreen.dart';
@@ -17,7 +19,7 @@ void main() async{
   runApp(MyApp());
 }
 
-//DatabaseReference userRef = FirebaseDatabase.instance.reference().child("users");
+DatabaseReference userRef = FirebaseDatabase.instance.reference().child("users");
 
 class MyApp extends StatelessWidget {
 
@@ -29,14 +31,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute:
-          HomeScreen.idScreen,
-        //LoginScreen.idScreen,
+            MainScreen.idScreen,
       routes: {
-        /*
+
         RegistrationScreen.idScreen: (context) => RegistrationScreen(),
         LoginScreen.idScreen: (context) => LoginScreen(),
+        GMapState.idScreen: (context) => GMapState(),
 
-         */
         MainScreen.idScreen: (context) => MainScreen(),
         HomeScreen.idScreen: (context) => HomeScreen(),
       },
