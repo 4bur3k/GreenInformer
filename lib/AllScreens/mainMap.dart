@@ -3,6 +3,9 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../main.dart';
+import '../main.dart';
+
 class GMapState extends StatefulWidget {
   static const String idScreen = "gmap";
   GMapState({Key key}) : super(key: key);
@@ -19,11 +22,14 @@ class _GMapState extends State<GMapState> {
     _mapController = controller;
 
     setState(() {
-      _markers.add(Marker(
-          markerId: MarkerId("0"),
-          position: LatLng(55.751999, 37.617734),
-          infoWindow: InfoWindow(
-              title: "Moscow", snippet: "Загрязнение окружающей среды")));
+      for(int i = 0; i < reports_list.length; i++) {
+        ReportMarker new_marker = reports_list[i];
+        _markers.add(Marker(
+            markerId: MarkerId("$i"),
+            position: LatLng(new_marker.longitude, new_marker.latitud),
+            infoWindow: InfoWindow(
+                title: new_marker.object, snippet: new_marker.product)));
+      }
     });
   }
 

@@ -19,6 +19,8 @@ void main() async{
   runApp(MyApp());
 }
 
+var reports_list = [];
+
 DatabaseReference userRef = FirebaseDatabase.instance.reference().child("users");
 
 class MyApp extends StatelessWidget {
@@ -46,3 +48,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class ReportMarker {
+  var longitude, latitud;
+  String object , product;
+
+  ReportMarker(var longitude, var latitud, String object, String product){
+    this.latitud = latitud;
+    this.longitude = longitude;
+    this.object = object;
+    this.product = product;
+  }
+
+}

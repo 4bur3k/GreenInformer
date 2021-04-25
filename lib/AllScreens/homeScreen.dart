@@ -10,6 +10,10 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:exif/exif.dart';
 
+import '../main.dart';
+import '../main.dart';
+import '../main.dart';
+
 class HomeScreen extends StatelessWidget {
   static const String idScreen = "home";
   File _image;
@@ -42,6 +46,7 @@ class HomeScreen extends StatelessWidget {
     } else {
       Fluttertoast.showToast(msg: "Плак!");
     }
+
 /*
       this..setState(() {
         if (pickedFile != null) {
@@ -53,6 +58,11 @@ class HomeScreen extends StatelessWidget {
 
  */
   }
+
+  ReportMarker new_marker =new ReportMarker(55.751999,37.617734, "", "");
+  TextEditingController textControllerObj = TextEditingController();
+  TextEditingController textControllerProd = TextEditingController();
+
 
   Future takePicture() async {
     final picker = ImagePicker();
@@ -91,6 +101,7 @@ class HomeScreen extends StatelessWidget {
                   height: 5,
                 ),
                 TextField(
+                  controller: textControllerObj,
                   decoration: InputDecoration(
                     fillColor: Colors.cyan,
                     border: OutlineInputBorder(),
@@ -124,6 +135,7 @@ class HomeScreen extends StatelessWidget {
                   width: 100,
                 ),
                 TextField(
+                  controller: textControllerProd,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Продукт',
@@ -194,6 +206,12 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushNamedAndRemoveUntil(
                           context, MainScreen.idScreen, (route) => false);
+
+
+                      new_marker.object = textControllerObj.text;
+                      new_marker.product = textControllerProd.text;
+                      print(new_marker.object + new_marker.product);
+                      reports_list.add(new_marker);
                     },
                     icon: Icon(
                       Icons.send,
@@ -209,3 +227,6 @@ class HomeScreen extends StatelessWidget {
         ));
   }
 }
+
+
+
