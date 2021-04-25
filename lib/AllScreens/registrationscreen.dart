@@ -40,6 +40,7 @@ class RegistrationScreen extends StatelessWidget {
                       height: 1,
                     ),
                     TextField(
+                      textAlign: TextAlign.center,
                       controller: nameTextEditingController,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
@@ -57,6 +58,7 @@ class RegistrationScreen extends StatelessWidget {
                       height: 1,
                     ),
                     TextField(
+                      textAlign: TextAlign.center,
                       controller: phoneTextEditingController,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
@@ -74,6 +76,7 @@ class RegistrationScreen extends StatelessWidget {
                       height: 1,
                     ),
                     TextField(
+                      textAlign: TextAlign.center,
                       controller: emailTextEditingController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
@@ -91,6 +94,7 @@ class RegistrationScreen extends StatelessWidget {
                       height: 1,
                     ),
                     TextField(
+                      textAlign: TextAlign.center,
                       controller: passwordTextEditingController,
                       obscureText: true,
                       decoration: InputDecoration(

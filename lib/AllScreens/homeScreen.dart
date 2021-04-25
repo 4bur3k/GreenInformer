@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app/AllScreens/mainscreen.dart';
 import 'dart:io';
@@ -9,20 +8,40 @@ import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:exif/exif.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String idScreen = "home";
   File _image;
 
-
   Future getImage() async {
     final picker = ImagePicker();
-      final pickedFile = await picker.getImage(source: ImageSource.gallery);
-      if (pickedFile != null){
-        Fluttertoast.showToast(msg: "Ура!");
-      }else{
-        Fluttertoast.showToast(msg: "Плак!");
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      Fluttertoast.showToast(msg: "Ура!");
+      Map<String, IfdTag> data =
+          await readExifFromBytes(File(pickedFile.path).readAsBytesSync());
+
+      if (data == null || data.isEmpty) {
+        print("No EXIF information found\n");
+        return;
       }
+
+      if (data.containsKey('JPEGThumbnail')) {
+        print('File has JPEG thumbnail');
+        data.remove('JPEGThumbnail');
+      }
+      if (data.containsKey('TIFFThumbnail')) {
+        print('File has TIFF thumbnail');
+        data.remove('TIFFThumbnail');
+      }
+
+      for (String key in data.keys) {
+        print("$key (${data[key].tagType}): ${data[key]}");
+      }
+    } else {
+      Fluttertoast.showToast(msg: "Плак!");
+    }
 /*
       this..setState(() {
         if (pickedFile != null) {
@@ -33,14 +52,14 @@ class HomeScreen extends StatelessWidget {
       });
 
  */
-    }
+  }
 
   Future takePicture() async {
     final picker = ImagePicker();
     final pickedFile = await picker.getImage(source: ImageSource.camera);
-    if (pickedFile != null){
+    if (pickedFile != null) {
       Fluttertoast.showToast(msg: "Ура!");
-    }else{
+    } else {
       Fluttertoast.showToast(msg: "Плак!");
     }
     /*
@@ -62,7 +81,6 @@ class HomeScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Center(
             child: Column(
-
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
@@ -188,7 +206,6 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-        )
-    );
+        ));
   }
 }
