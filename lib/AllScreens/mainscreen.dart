@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -12,7 +14,9 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Main Screen"),
+        title: Text("Главный экран"),
+
+
 
       ),
     );
